@@ -1,0 +1,129 @@
+favorite
+ CREATE PRIMARY INDEX `#primary` ON `favorite` WITH { "num_replica":1 }
+  CREATE INDEX `CB_INDEX_GSI_001_004` ON `favorite`(`type`,`userId`) WHERE (`type` = "favorite") WITH { "num_replica":1 }
+
+
+ manual-enriched-data
+  CREATE PRIMARY INDEX `#primary` ON `manual-enriched-data` WITH { "num_replica":1 }
+  CREATE INDEX `CB_INDEX_GSI_001_052` ON `manual-enriched-data`(`urn`,`st`,`id`) WITH { "num_replica":1 }
+  CREATE INDEX `CB_INDEX_GSI_001_060` ON `manual-enriched-data`(`urn`,`st`,`id`) WITH { "num_replica":1 }
+  CREATE INDEX `CB_INDEX_GSI_002_052` ON `manual-enriched-data`(`st`,`id`) WITH { "num_replica":1 }
+  CREATE INDEX `CB_INDEX_GSI_002_060` ON `manual-enriched-data`(`st`,`id`) WITH { "num_replica":1 }
+
+stream-nw9
+ CREATE PRIMARY INDEX `#primary` ON `stream-nw9` WITH { "num_replica":1 }
+ CREATE INDEX `CB_INDEX_GSI_001_006_NW9` ON `stream-nw9`(`type`,`userId`) WHERE (`type` = "stream") WITH { "num_replica":1 }
+
+
+ vod-content
+ CREATE PRIMARY INDEX `#primary` ON `vod-content` WITH { "num_replica":1 }
+ CREATE INDEX `CB_INDEX_GSI_011_001` ON `vod-content`(`urn`,`cty`) WITH { "num_replica":1 }
+ CREATE INDEX `CB_INDEX_GSI_011_002` ON `vod-content`(`id`,`key`,`st`) WITH { "nodes":[ "num_replica":1 }
+  CREATE INDEX `CB_INDEX_GSI_011_003` ON `vod-content`(`id`) WHERE (`st` = "published") WITH { "num_replica":1 }
+  CREATE INDEX `CB_INDEX_GSI_011_004` ON `vod-content`(`cty`,`st`) WITH { "num_replica":1 }
+  CREATE INDEX `CB_INDEX_GSI_011_005` ON `vod-content`(`id`,`cty`,`st`) WITH { "num_replica":1 }
+  CREATE INDEX `CB_INDEX_GSI_011_006` ON `vod-content`(`pkg_id`,`cty`,`st`) WITH { "num_replica":1 }
+  CREATE INDEX `CB_INDEX_GSI_011_007` ON `vod-content`(`pkg_id`,`cty`,`st`) WITH { "num_replica":1 }
+  CREATE INDEX `CB_INDEX_GSI_011_019` ON `vod-content`(`cp`,`st`,`cty`,`urn`) WITH { "num_replica":1 }
+   CREATE INDEX `content_cty` ON `vod-content`(`cty`) WITH { "num_replica":1 }
+   CREATE INDEX `content_id` ON `vod-content`(`id`) WITH { "num_replica":1 }
+   CREATE INDEX `content_urn` ON `vod-content`(`urn`) WITH { "num_replica":1 }
+
+
+data-container
+   CREATE PRIMARY INDEX `#primary-storefront` ON `data-container` WITH { "num_replica":1 }
+    CREATE INDEX `CB_INDEX_GSI_001_010` ON `data-container`(`urn`,`id`,`st`,`ty`) WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_001_087` ON `data-container`(`urn`,`st`,`id`,`nu`,`ty`) WHERE ((`urn` = "urn:storefront") and (`st` = "published")) WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_002_010` ON `data-container`(`id`,`st`) WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_002_087` ON `data-container`(`st`,`id`,`nu`) WHERE ((`urn` = "urn:storefront") and (`st` = "published")) WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_010_001` ON `data-container`(`id`,`st`,`ty`) WHERE (`urn` = "urn:storefront") WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_010_002` ON `data-container`(`st`,`ty`) WHERE (`urn` = "urn:storefront") WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_010_003` ON `data-container`(`id`,`st`,str_to_millis(`st_dt`),str_to_millis(`ed_dt`)) WHERE (`urn` = "urn:storefront") WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_010_004` ON `data-container`(`id`,`key`,`st`) WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_010_005` ON `data-container`(`id`,`key`,`st`,`ty`,str_to_millis(`st_dt`),str_to_millis(`ed_dt`)) WITH { "num_replica":1 }
+
+vod-content-nw9
+   CREATE PRIMARY INDEX `#primary` ON `vod-content-nw9` WITH { "num_replica":1 }
+   CREATE INDEX `CB_INDEX_GSI_011_001_NW9` ON `vod-content-nw9`(`urn`,`cty`) WITH { "num_replica":1 }
+   CREATE INDEX `CB_INDEX_GSI_011_002_NW9` ON `vod-content-nw9`(`id`,`key`,`st`) WITH { "num_replica":1 }
+   CREATE INDEX `CB_INDEX_GSI_011_003_NW9` ON `vod-content-nw9`(`id`) WHERE (`st` = "published") WITH { "num_replica":1 }
+   CREATE INDEX `CB_INDEX_GSI_011_004_NW9` ON `vod-content-nw9`(`cty`,`st`) WITH { "num_replica":1 }
+   CREATE INDEX `CB_INDEX_GSI_011_005_NW9` ON `vod-content-nw9`(`id`,`cty`,`st`) WITH { "num_replica":1 }
+    CREATE INDEX `CB_INDEX_GSI_011_006_NW9` ON `vod-content-nw9`(`pkg_id`,`cty`,`st`) WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_011_019_NW9` ON `vod-content-nw9`(`cp`,`st`,`cty`,`urn`) WITH { "num_replica":1 }
+
+appstartupconfig
+	CREATE INDEX `CB_INDEX_GSI_001_001` ON `appstartupconfig`(`t`,`st`,`id`) WHERE (`t` = "config") WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_001_023` ON `appstartupconfig`(`t`,`aty`,`lty`) WHERE (`t` in ["product", "application", "attribute", "lookup"]) WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_002_023` ON `appstartupconfig`(`t`,`st`,`id`,`key`,`pty`,`pn`,`an`) WHERE (`t` in ["policy"]) WITH { "num_replica":1 }
+	
+	appstartupconfig-nw9
+	CREATE INDEX `CB_INDEX_GSI_001_001_NW9` ON `appstartupconfig-nw9`(`t`,`st`,`id`) WHERE (`t` = "config") WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_001_023_NW9` ON `appstartupconfig-nw9`(`t`,`aty`,`lty`) WHERE (`t` in ["product", "application", "attribute", "lookup"]) WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_002_023_NW9` ON `appstartupconfig-nw9`(`t`,`st`,`id`,`key`,`pty`,`pn`,`an`) WHERE (`t` in ["policy"]) WITH { "num_replica":1 }
+	
+	
+	favorite-nw9
+	CREATE INDEX `CB_INDEX_GSI_001_004_NW9` ON `favorite-nw9`(`type`,`userId`) WHERE (`type` = "favorite") WITH { "num_replica":1 }
+	
+	stream
+	CREATE INDEX `CB_INDEX_GSI_001_006` ON `stream`(`type`,`userId`) WHERE (`type` = "stream") WITH { "num_replica":1 }
+	CREATE INDEX `personalization-stream-index` ON `stream`(`type`,`userId`) WHERE (`type` = "stream") WITH { "num_replica":1 }
+
+
+	
+	
+	bookmark-nw9
+	CREATE INDEX `CB_INDEX_GSI_001_008_NW9` ON `bookmark-nw9`(`type`,`userId`) WHERE (`type` = "bookmark") WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_002_008_NW9` ON `bookmark-nw9`(`type`,`userId`) WHERE (`type` = "history") WITH { "num_replica":1 }
+	
+	data-container-nw9
+	CREATE INDEX `CB_INDEX_GSI_001_010_NW9` ON `data-container-nw9`(`urn`,`id`,`st`,`ty`) WITH { "num_replica":1 }
+	CREATE INDEX `CB_INDEX_GSI_001_087_NW9` ON `data-container-nw9`(`urn`,`st`,`id`,`nu`,`ty`) WHERE ((`urn` = "urn:storefront") and (`st` = "published")) WITH { "num_replica":1 }
+	 CREATE INDEX `CB_INDEX_GSI_002_010_NW9` ON `data-container-nw9`(`id`,`st`) WITH { "num_replica":1 }
+	 CREATE INDEX `CB_INDEX_GSI_002_087_NW9` ON `data-container-nw9`(`st`,`id`,`nu`) WHERE ((`urn` = "urn:storefront") and (`st` = "published")) WITH { "num_replica":1 }
+	
+	
+	 live-content
+	 CREATE INDEX `CB_INDEX_GSI_001_022` ON `live-content`(`cty`,`st`,`id`) WITH { "num_replica":1 }
+	  CREATE INDEX `CB_INDEX_GSI_002_022` ON `live-content`(`st`,`id`) WITH { "num_replica":1 }
+	 
+	 
+	  live-content-nw9
+	  CREATE INDEX `CB_INDEX_GSI_001_022_NW9` ON `live-content-nw9`(`cty`,`st`,`id`) WITH { "num_replica":1 }
+	  CREATE INDEX `CB_INDEX_GSI_002_022_NW9` ON `live-content-nw9`(`st`,`id`) WITH { "num_replica":1 }
+
+	aggregator-data
+	  CREATE INDEX `CB_INDEX_GSI_001_025` ON `aggregator-data`(`urn`,`st`,`id`,`nu`) WITH { "num_replica":1 }
+	  CREATE INDEX `CB_INDEX_GSI_002_025` ON `aggregator-data`(`st`,`id`) WITH { "num_replica":1 }
+	  CREATE INDEX `CB_INDEX_GSI_003_025` ON `aggregator-data`(`urn`,`st`,`stl_id`,`setl_id`) WITH { "num_replica":1 }
+	 
+	 
+	 aggregator-data-nw9
+	 CREATE INDEX `CB_INDEX_GSI_001_025_NW9` ON `aggregator-data-nw9`(`urn`,`st`,`id`,`nu`) WITH { "num_replica":1 }
+	 CREATE INDEX `CB_INDEX_GSI_002_025_NW9` ON `aggregator-data-nw9`(`st`,`id`) WITH { "num_replica":1 }
+	  CREATE INDEX `CB_INDEX_GSI_003_025_NW9` ON `aggregator-data-nw9`(`urn`,`st`,`stl_id`,`setl_id`) WITH { "num_replica":1 }
+	 
+	  manual-enriched-data-nw9
+	  CREATE INDEX `CB_INDEX_GSI_001_052_NW9` ON `manual-enriched-data-nw9`(`urn`,`st`,`id`) WITH { "num_replica":1 }
+	  CREATE INDEX `CB_INDEX_GSI_002_052_NW9` ON `manual-enriched-data-nw9`(`st`,`id`) WITH { "num_replica":1 }
+	 
+	 
+	  search-history
+	  CREATE INDEX `CB_INDEX_GSI_001_083` ON `search-history`(`type`,`userId`) WHERE (`type` = "search-history") WITH { "num_replica":1 }
+	 
+	 
+	  search-history-nw9
+	  CREATE INDEX `CB_INDEX_GSI_001_083_NW9` ON `search-history-nw9`(`type`,`userId`) WHERE (`type` = "search-history") WITH { "num_replica":1 }
+	 
+	 cms-content
+	 CREATE INDEX `CB_INDEX_GSI_001_119` ON `cms-content`(`cty`,`st`,`id`) WITH { "num_replica":1 }
+	 CREATE INDEX `CB_INDEX_GSI_002_119` ON `cms-content`(`st`,`id`) WITH { "num_replica":1 }
+
+
+
+
+
+
+
+

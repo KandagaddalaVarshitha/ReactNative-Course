@@ -1,0 +1,37 @@
+tend to end to service deplyoment from the scratch 
+was going through how to deploy  the service in fl-edge  and to deploy the service in ctv-edge 
+we have deployed the service in stagin for both flp and ctv 
+also came to know how set up the vault and how to make dns entry also to expsoe the service 
+
+
+
+to deploy the service in fl-edge
+connect to the cluster
+jx ns jx
+jx ns jx
+jx create quick start
+fl-golang-https-couchbase
+fl-edge
+repo name
+language should be given as go
+
+
+in fl-edge-service --add release version-- create a pr---- add jx by reffering other services which is updating the fl-jx-env --- fl-product-gcp-edge-stag
+in charts--- values.yaml --- check for asm---- add service id--- auth policy false--- client --- expected error time out in k9s we see local file is missing
+after merging the pr---- master build should get succedded 
+
+
+navigate to ---- fl-jx-env --- fl-product-gcp-edge-stag--- open the pr and add the 2 lines in helmfile.yaml and check the dev
+then create a new file in edge by reffering the other services ---- now  pr will be auto merged
+
+
+
+
+now go to jenkins refer to our notes and add the parameters make sure it is multi or single and reffer it in the gen-5 microservice template 
+if the service is not found clone microservice template and add the service with chart and conf also make sure about the branch in the github desktop
+master is for single and for multi it will be as multi-product
+
+now enter the parameters and run the build--- new service will be created in customer (such as ctv-edge)
+add the release--go to the pr validation branch -- verify the service id---asm---- auth policy--- false and same after merging the pr master build succedded refer to the env
+
+such as ctv-env---- go and add the helmfile and values.yaml like above and it will get auto merged

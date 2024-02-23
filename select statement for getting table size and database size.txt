@@ -1,0 +1,26 @@
+select table_name as 'Table'  , round(((data_length+index_length)/1024/1024/1024),2)  'Size in GB' From information_schema.TABLES
+where  table_schema="hydra_db" AND  table_name='hydra_oauth2_access' ;
+
+select table_schema as 'DataBase',sum(round(((data_length+index_length)/1024/1024/1024),2)) 'DB Size in GB' from information_schema.tables
+where table_schema="hydra_db"  ;
+
+select table_schema as 'DataBase',sum(round(((data_free)/1024/1024/1024),2)) 'DB free Size in GB' from information_schema.tables
+where table_schema="hydra_db"  ;
+
+
+
+SELECT TABLE_NAME AS `Table`, ROUND( (DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024 / 1024) AS `Size (GB)` 
+FROM information_schema.TABLES WHERE TABLE_SCHEMA = "hydra_db" AND TABLE_NAME = "hydra_oauth2_access"
+ ORDER BY (DATA_LENGTH + INDEX_LENGTH) DESC;
+
+SELECT table_schema "DB Name", ROUND(SUM(data_length + index_length) / 1024 / 1024 / 1024, 1) "DB Size in GB" 
+FROM information_schema.tables where table_schema not in ('information_schema', 'mysql','performance_schema' ,'sys')
+ GROUP BY table_schema;
+
+SELECT TABLE_NAME AS `Table`, ROUND( (DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024 ) AS `Size (MB)` 
+FROM information_schema.TABLES WHERE TABLE_SCHEMA = "hydra_db" AND TABLE_NAME = "hydra_oauth2_access"
+ ORDER BY (DATA_LENGTH + INDEX_LENGTH) DESC;
+
+SELECT table_schema "DB Name", ROUND(SUM(data_length + index_length) / 1024 / 1024 , 1) "DB Size in MB" 
+FROM information_schema.tables where table_schema not in ('information_schema', 'mysql','performance_schema' ,'sys')
+ GROUP BY table_schema;
