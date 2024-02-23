@@ -1,0 +1,29 @@
+{
+    "PockemonData":[
+        {"id":"1","type":"Grass","name":"Chandra"},
+        {"id":"2","type":"water","name":"Chandra"},
+        {"id":"3","type":"fire","name":"Chandra"},
+        {"id":"4","type":"Electric","name":"Chandra"},
+        {"id":"5","type":"fire","name":"Chandra"},
+        {"id":"6","type":"water","name":"Chandra"},
+        {"id":"7","type":"fire","name":"Chandra"},
+        {"id":"8","type":"Grass","name":"Chandra"},
+        {"id":"9","type":"water","name":"Chandra"},
+        {"id":"10","type":"Electric","name":"Chandra"},
+        {"id":"11","type":"Grass","name":"Chandra"},
+        {"id":"12","type":"water","name":"Chandra"},
+        {"id":"13","type":"fire","name":"Chandra"},
+        {"id":"14","type":"water","name":"Chandra"},
+        {"id":"15","type":"Electric","name":"Chandra"},
+        {"id":"16","type":"water","name":"Chandra"},
+        {"id":"17","type":"water","name":"Chandra"},
+        {"id":"18","type":"fire","name":"Chandra"},
+        {"id":"19","type":"water","name":"Chandra"},
+        {"id":"20","type":"fire","name":"Chandra"},
+        {"id":"21","type":"Grass","name":"Chandra"},
+        {"id":"22","type":"fire","name":"Chandra"},
+        {"id":"23","type":"fire","name":"Chandra"}
+        
+
+    ]
+}
